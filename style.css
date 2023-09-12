@@ -235,7 +235,11 @@ img {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
           clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 }
-
+.item-in-cart{
+  font-size: 18px;
+  color: rgb(0, 17, 167);
+  font-weight: 550;
+}
 .page-content {
   margin-top: 10px;
 }
@@ -304,6 +308,7 @@ img {
 .footer__link-item,
 .footer__link-item {
   color: #ea332a;
+  font-weight: 500;
 }
 .footer__link-item:hover, .footer__link-item:focus,
 .footer__link-item:hover,

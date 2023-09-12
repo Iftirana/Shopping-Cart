@@ -7,6 +7,7 @@
   const clearCartBtn = document.querySelector("#clear-cart");
   const checkoutBtn = document.querySelector("#checkout-btn");
   const totalPriceContainer = document.querySelector("#total-price");
+  
 
   // FUNCTIONS
 
@@ -25,6 +26,7 @@
   function setLSContent(lsContent) {
     // save content inside local storage
     localStorage.setItem("products", JSON.stringify(lsContent));
+
   }
 
   function calculateTotal(prices) {
@@ -102,7 +104,7 @@
     // add markup to DOM
     cartContent.querySelector("tbody").innerHTML = productMarkup;
   }
-
+  
   function saveProduct(clickedBtn) {
     // save selected product in local storage and display it in the cart together
 
@@ -121,12 +123,12 @@
 
     // to avoid user adds the same course twice, check
     // the product is not in LS already before adding it
-    lsContent.forEach(function(product) {
-      if (product.id === productId) {
-        alert("Sie haben dieses kurz bereits in den Warenkorb gelegt! (Clear Cart)");
-        isProductInCart = true;
-      }
-    });
+    //lsContent.forEach(function(product) {
+    // if (product.id === productId) {
+    //  alert("Sie haben dieses kurz bereits in den Warenkorb gelegt! (Clear Cart)");
+    //    isProductInCart = true;
+    //  }
+    //});
 
     // only if the product is not already in the cart,
     // create an object representing selected product info
@@ -143,6 +145,8 @@
       setLSContent(lsContent);
       // update the display of courses in the shopping cart
       displayProducts();
+    cartCount++;
+    updateCartCount();
     }
   }
 
@@ -169,6 +173,9 @@
     setLSContent(lsContent);
 
     displayProducts();
+    // Dekrementieren Sie die cartCount-Variable und aktualisieren Sie die Anzeige
+  cartCount--;
+  updateCartCount();
   }
 
   function clearCart() {
@@ -182,6 +189,8 @@
     setLSContent(lsContent);
     // display cart content again
     displayProducts();
+    cartCount = 0;
+  updateCartCount();
   }
 
   function checkout() {
@@ -302,3 +311,14 @@ var add1 = document.getElementById("add1");
       add4.style.backgroundColor = "";
    }, 1000)
   }
+
+let cartCount = "";
+function updateCartCount() {
+  const cartCountElement = document.querySelector(".item-in-cart");
+  cartCountElement.textContent = cartCount;
+}
+
+document.addEventListener("DOMContentLoaded", function(e) {
+  // ...
+  updateCartCount();
+});
